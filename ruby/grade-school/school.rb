@@ -1,6 +1,6 @@
 class School
 
-  attr_accessor :db
+  attr_reader :db
 
   def initialize
     self.db = {}
@@ -20,4 +20,8 @@ class School
       sorted[k] = self.db[k].sort
     end
   end
+
+  private
+
+  attr_writer :db
 end
