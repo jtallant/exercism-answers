@@ -16,9 +16,7 @@ class School
   end
 
   def sort
-    self.db.keys.sort.each.with_object(Hash.new(0)) do |k, sorted|
-      sorted[k] = self.db[k].sort
-    end
+    self.db.keys.sort.each.with_object(Hash.new(0)) { |k, sorted| sorted[k] = self.db[k].sort }
   end
 
   private
