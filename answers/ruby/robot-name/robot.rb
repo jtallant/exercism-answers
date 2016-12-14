@@ -4,42 +4,40 @@ class Robot
   attr_reader :previous_names
 
   def initialize
-    @name = random_name
-    self.previous_names = []
+    @previous_names = []
+    assign_name
   end
 
   def reset
-    log_name
-    @name = unique_name
+    assign_name
   end
 
   private
 
-  attr_writer :previous_names
+    def assign_name
+      @name = unique_name
+      @previous_names << @name
+    end
 
-  def unique_name
-    name = random_name
-    return unique_name if previous_names.include?(name)
-    name
-  end
+    def unique_name
+      name = random_name
+      return unique_name if previous_names.include?(name)
+      name
+    end
 
-  def random_name
-    two_random_letters.upcase + three_random_numbers.to_s
-  end
+    def random_name
+      two_random_letters.upcase + three_random_numbers.to_s
+    end
 
-  def two_random_letters
-    random_letter + random_letter
-  end
+    def two_random_letters
+      random_letter + random_letter
+    end
 
-  def random_letter
-    ('a'..'z').to_a[rand(26)]
-  end
+    def random_letter
+      ('a'..'z').to_a.sample
+    end
 
-  def log_name
-    self.previous_names << @name
-  end
-
-  def three_random_numbers
-    rand(101..1000)
-  end
+    def three_random_numbers
+      rand(100..999)
+    end
 end
