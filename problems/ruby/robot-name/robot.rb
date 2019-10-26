@@ -26,7 +26,7 @@ class Robot
     end
 
     def random_name
-      two_random_letters + three_random_numbers.to_s
+      two_random_letters.upcase + three_random_numbers.to_s
     end
 
     def two_random_letters
@@ -34,7 +34,7 @@ class Robot
     end
 
     def random_letter
-      ('A'..'Z').to_a.sample
+      ('a'..'z').to_a.sample
     end
 
     def three_random_numbers
